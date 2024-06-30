@@ -34,10 +34,17 @@ let quotes = [
 ];
 
 
+let lastRandomIndex = -1; 
 document.getElementById("button").addEventListener("click", function () {
-    let randomIndex = Math.floor(Math.random() * quotes.length);
-    let randomQuote = quotes[randomIndex];
-    document.querySelector(".my-quote").textContent = randomQuote;
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * quotes.length);
+  } while (randomIndex === lastRandomIndex); 
+
+  let randomQuote = quotes[randomIndex];
+  document.querySelector(".my-quote").textContent = randomQuote;
+
+  lastRandomIndex = randomIndex; 
 });
 
 document.getElementById("darkThemeBtn").addEventListener("click", function () {
